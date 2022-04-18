@@ -6,11 +6,11 @@
 /*   By: shenriqu <shenriqu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 00:25:59 by shenriqu          #+#    #+#             */
-/*   Updated: 2022/04/17 04:14:15 by shenriqu         ###   ########.fr       */
+/*   Updated: 2022/04/17 23:48:21 by shenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../include/ft_printf.h"
 
 int	ft_print_char(int c)
 {
@@ -28,40 +28,11 @@ int	ft_print_string(char *string)
 		ft_putstr_fd("(null)", 1);
 		return (6);
 	}
-	while (*string++)
+	while (*string)
 	{
 		write(1, *&string, 1);
-		//*string++;
+		string++;
 		len++;
-	}
-	return (len);
-}
-
-int	ft_print_number(int number)
-{
-	int		len;
-	char	*str_num;
-
-	len = 0;
-	str_num = ft_itoa(number);
-	len = ft_print_string(str_num);
-	free(str_num);
-	return (len);
-}
-
-int	ft_print_u_number(unsigned int number)
-{
-	int		len;
-	char	*str_num;
-
-	len = 0;
-	if (number == 0)
-		len += write(1, "0", 1);
-	else
-	{
-		str_num = ft_itoa(number);
-		len += ft_print_string(str_num);
-		free(str_num);
 	}
 	return (len);
 }

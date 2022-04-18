@@ -6,13 +6,11 @@
 /*   By: shenriqu <shenriqu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 00:00:01 by shenriqu          #+#    #+#             */
-/*   Updated: 2022/04/17 05:35:36 by shenriqu         ###   ########.fr       */
+/*   Updated: 2022/04/18 00:37:03 by shenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-
-int	ft_scan_string(const char received_str, va_list args);
+#include "../include/ft_printf.h"
 
 int	ft_printf(const char *received_str, ...)
 {
@@ -31,7 +29,7 @@ int	ft_printf(const char *received_str, ...)
 			i++;
 		}
 		else
-			ft_putchar_fd (received_str[i], 1);
+			len += ft_print_char(received_str[i]);
 		i++;
 	}
 	va_end(args);
@@ -45,15 +43,17 @@ int	ft_scan_string(const char received_str, va_list args)
 	printed_length = 0;
 	if (received_str == 'c')
 		printed_length += ft_print_char(va_arg(args, int));
-	else if (received_str == 's')
+	if (received_str == 's')
 		printed_length += ft_print_string(va_arg(args, char *));
-	else if (received_str == 'd')
+	if (received_str == 'd' || received_str == 'i')
 		printed_length += ft_print_number(va_arg(args, int));
-	else if (received_str == 'u')
+	if (received_str == 'u')
 		printed_length += ft_print_u_number(va_arg(args, unsigned int));
-	// else if (received_str == 'x' || received_str == 'X')
-	// 	printed_length += ft_print_l_hex(va_arg(args, unsigned int));
-	else if (received_str == '%')
+	if (received_str == 'x')
+		printed_length += ft_print_l_hex(va_arg(args, unsigned int));
+	if (received_str == 'X')
+		printed_length += ft_print_u_hex(va_arg(args, unsigned int));
+	if (received_str == '%')
 		printed_length += ft_print_percent();
 	return (printed_length);
 }

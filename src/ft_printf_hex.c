@@ -6,11 +6,11 @@
 /*   By: shenriqu <shenriqu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:36:07 by shenriqu          #+#    #+#             */
-/*   Updated: 2022/04/17 03:52:52 by shenriqu         ###   ########.fr       */
+/*   Updated: 2022/04/18 00:55:06 by shenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../include/ft_printf.h"
 
 char	*ft_itoh(unsigned int number)
 {
@@ -51,4 +51,36 @@ int	ft_print_l_hex(unsigned int number)
 		free(hex);
 	}
 	return (len);
+}
+
+int	ft_print_u_hex(unsigned int number)
+{
+	int		len;
+	char	*hex;
+	int		i;
+
+	len = 0;
+	i = 0;
+	if (number == 0)
+		len += write(1, "0", 1);
+	else
+	{
+		hex = ft_itoh((unsigned int)number);
+		while (hex[i] != '\0')
+		{
+			if(ft_isalpha(hex[i]))
+				hex[i] = hex[i]-32;
+			i++;
+		}
+		len = ft_print_string(hex);
+		free(hex);
+	}
+	return (len);
+}
+
+int	ft_toupper(int c)
+{
+	if (c >= 97 && c <= 122)
+		c -= 32;
+	return (c);
 }

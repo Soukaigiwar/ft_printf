@@ -6,51 +6,55 @@
 #    By: shenriqu <shenriqu@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 21:59:00 by shenriqu          #+#    #+#              #
-#    Updated: 2022/04/17 04:45:35 by shenriqu         ###   ########.fr        #
+#    Updated: 2022/04/17 23:47:45 by shenriqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-CFLAGS = -Wall -Werror -Wextra
-CC = gcc
-AR = ar rcs
-FILES = ft_printf.c ft_printf_utils.c main.c
-LIBFT_DIR = ./libft
-LIBFT = libft.a
+NAME		= libftprintf.a
+INCLUDE		= include
+LIBFT		= libft
+SRC_DIR		= src/
+OBJ_DIR		= obj/
+CC			= gcc
+CFLAGS		= -Wall -Werror -Wextra -I
+RM			= rm -f
+AR			= ar rcs
 
-printf:
-	$(CC) -c ./libft/*.c
-	$(CC) $(CFLAGS) $(FILES) ./libft/libft.a
-#	clear && gcc *.c -L./libft/libft.a
+SRC_FILES	=	ft_printf ft_printf_utils ft_printf_hex ft_print_num
 
-vai:
-	clear && gcc -Werror *.c ./libft/libft.a -o a.out && ./a.out
+SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-norm:
-	norminette *.c
-# OBJFILES = $(FILES:%.c=%.o)
+OBJF		=	.cache_exists
 
-# all: $(NAME)
+all:		$(NAME)
 
-# $(NAME): $(OBJFILES)
-# 	ar rcs $@ $^
-	
-# $(OBJFILES): $(FILES)
-# 	$(CC) $(CFLAGS) $^
+$(NAME):	$(OBJ)
+			@make -C $(LIBFT)
+			@cp libft/libft.a .
+			@mv libft.a $(NAME)
+			@$(AR) $(NAME) $(OBJ)
 
-# so:
-# 	$(CC) -nostartfiles -fPIC $(CFLAGS) $(FILES)
-# 	gcc -nostartfiles -shared -o libftprintf.so $(OBJFILES)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
+			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+$(OBJF):
+			@mkdir -p $(OBJ_DIR)
 
 clean:
-	rm -f *.o a.out
+			@$(RM) -rf $(OBJ_DIR)
+			@make clean -C $(LIBFT)
 
-# fclean: clean
-# 	rm -f $(NAME)
+fclean:		clean
+			@$(RM) -f $(NAME)
+			@$(RM) -f $(LIBFT)/libft.a
+			
+re:			fclean all
+			
+norm:
+			@norminette $(SRC) $(INCLUDE) $(LIBFT) | grep -v Norme -B1 || true
 
-# re: fclean all
+vai:
+			@clear && gcc -Werror main.c ./libftprintf.a -o a.out && ./a.out
 
-# norm:
-# 	clear && norminette $(FILES)
-
-# .PHONY: clean fclean all re
+.PHONY:		all clean fclean re norm
