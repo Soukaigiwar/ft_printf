@@ -6,7 +6,7 @@
 /*   By: shenriqu <shenriqu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:36:07 by shenriqu          #+#    #+#             */
-/*   Updated: 2022/04/18 00:55:06 by shenriqu         ###   ########.fr       */
+/*   Updated: 2022/04/18 20:35:16 by shenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,12 @@ int	ft_print_u_hex(unsigned int number)
 		hex = ft_itoh((unsigned int)number);
 		while (hex[i] != '\0')
 		{
-			if(ft_isalpha(hex[i]))
-				hex[i] = hex[i]-32;
+			if (ft_isalpha(hex[i]))
+				hex[i] = hex[i] - 32;
 			i++;
 		}
 		len = ft_print_string(hex);
 		free(hex);
 	}
 	return (len);
-}
-
-int	ft_toupper(int c)
-{
-	if (c >= 97 && c <= 122)
-		c -= 32;
-	return (c);
 }

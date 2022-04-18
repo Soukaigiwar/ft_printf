@@ -6,7 +6,7 @@
 #    By: shenriqu <shenriqu@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 21:59:00 by shenriqu          #+#    #+#              #
-#    Updated: 2022/04/17 23:47:45 by shenriqu         ###   ########.fr        #
+#    Updated: 2022/04/18 20:51:25 by shenriqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS		= -Wall -Werror -Wextra -I
 RM			= rm -f
 AR			= ar rcs
 
-SRC_FILES	=	ft_printf ft_printf_utils ft_printf_hex ft_print_num
+SRC_FILES	=	ft_printf ft_printf_utils ft_printf_hex ft_printf_num
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -54,7 +54,8 @@ re:			fclean all
 norm:
 			@norminette $(SRC) $(INCLUDE) $(LIBFT) | grep -v Norme -B1 || true
 
-vai:
-			@clear && gcc -Werror main.c ./libftprintf.a -o a.out && ./a.out
+vai:		re
+			@norminette $(SRC)
+			@clear && gcc main.c ./libftprintf.a -o a.out && ./a.out
 
 .PHONY:		all clean fclean re norm
