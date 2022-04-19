@@ -6,7 +6,7 @@
 /*   By: shenriqu <shenriqu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 23:50:23 by shenriqu          #+#    #+#             */
-/*   Updated: 2022/04/18 00:44:17 by shenriqu         ###   ########.fr       */
+/*   Updated: 2022/04/18 21:39:56 by shenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char    *ft_uitoa(unsigned int number);
 int     ft_num_len(unsigned int num);
 int		ft_scan_string(const char received_str, va_list args);
 int		ft_print_char(int c);
+int		ft_print_pointer(unsigned long long pointer);
 int		ft_print_string(char *string);
 int		ft_print_number(int number);
 int		ft_print_u_number(unsigned int number);

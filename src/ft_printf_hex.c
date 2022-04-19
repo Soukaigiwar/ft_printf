@@ -15,9 +15,8 @@
 char	*ft_itoh(unsigned int number)
 {
 	char	*hex;
-	int		remainder;
+	unsigned int		remainder;
 	int		i;
-
 	remainder = 1;
 	i = 0;
 	hex = (char *)malloc(sizeof(char) * (10 + 1));
@@ -46,7 +45,8 @@ int	ft_print_l_hex(unsigned int number)
 		len += write(1, "0", 1);
 	else
 	{
-		hex = ft_itoh((unsigned int)number);
+		hex = ft_itoh(number);
+		//write(1, "M", 1);
 		len = ft_print_string(hex);
 		free(hex);
 	}

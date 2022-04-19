@@ -6,7 +6,7 @@
 /*   By: shenriqu <shenriqu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 00:00:01 by shenriqu          #+#    #+#             */
-/*   Updated: 2022/04/18 00:37:03 by shenriqu         ###   ########.fr       */
+/*   Updated: 2022/04/18 22:04:53 by shenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	ft_scan_string(const char received_str, va_list args)
 		printed_length += ft_print_char(va_arg(args, int));
 	if (received_str == 's')
 		printed_length += ft_print_string(va_arg(args, char *));
+	if (received_str == 'p')
+		printed_length += ft_print_pointer(va_arg(args, unsigned long long int));
 	if (received_str == 'd' || received_str == 'i')
 		printed_length += ft_print_number(va_arg(args, int));
 	if (received_str == 'u')
