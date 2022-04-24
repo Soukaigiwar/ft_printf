@@ -6,7 +6,7 @@ Observation: Without Bonus part
 The goal with this project is to learn about using a variable number of arguments.
 
 Implementing the following conversions:
-  %c - Prints a single character.
+  %c - Prints a single character.\n
   %s - Prints a string.
   %p - Prints a pointer address in hexadecimal format.
   %d - Prints a decimal (base 10) number.
