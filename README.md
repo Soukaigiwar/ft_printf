@@ -3,7 +3,7 @@
 
 **Observation: Without Bonus part**
 
-The goal with this project is to learn about using a variable number of arguments.
+> The goal with this project is to learn about using a variable number of arguments.
 
 Implementing the following conversions:<br />
 - %c - Prints a single character.<br />
