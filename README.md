@@ -5,13 +5,13 @@ Observation: Without Bonus part
 
 The goal with this project is to learn about using a variable number of arguments.
 
-Implementing the following conversions:
-  %c - Prints a single character.
-  %s - Prints a string.
-  %p - Prints a pointer address in hexadecimal format.
-  %d - Prints a decimal (base 10) number.
-  %i - Prints an integer in base 10.
-  %u - Prints an unsigned decimal (base 10) number.
-  %x - Prints a number in a hexadecimal (base 16) lowercase format.
-  %X - Prints a number in a hexadecimal (base 16) uppercase format.
-  %% - Prints a percent sign.
+Implementing the following conversions:<br />
+  %c - Prints a single character.<br />
+  %s - Prints a string.<br />
+  %p - Prints a pointer address in hexadecimal format.<br />
+  %d - Prints a decimal (base 10) number.<br />
+  %i - Prints an integer in base 10.<br />
+  %u - Prints an unsigned decimal (base 10) number.<br />
+  %x - Prints a number in a hexadecimal (base 16) lowercase format.<br />
+  %X - Prints a number in a hexadecimal (base 16) uppercase format.<br />
+  %% - Prints a percent sign.<br />
